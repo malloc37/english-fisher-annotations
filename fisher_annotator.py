@@ -151,10 +151,7 @@ class Annotate(Parser):
     def setup(self): 
         all_2004 = self.parse_sentences(            
             trans_data=os.path.join(
-                "LDC2004T19", 
-                "fe_03_p1_tran", 
-                "data", 
-                "trans",
+                "transcripts"
                 ),
             parsed_data="fisher-2004-annotations"
         )
@@ -180,6 +177,7 @@ class Annotate(Parser):
                 trans_file = os.path.join(root, filename)
                 segments = self.read_transcription(trans_file) 
                 # Loop over cleaned/pre-proceesed transcripts         
+                print(segments)
                 doc = [segment for segment in segments if segment]    
                 parse_trees, df_labels = self.run_parser(doc)
                 # Write constituency parse trees and disfluency labels into files
